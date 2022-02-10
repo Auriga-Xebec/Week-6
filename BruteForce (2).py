@@ -1,6 +1,7 @@
 '''Program that asks to either break a hashed password or set a new hashed password, by iterating a list of strings
-202202091339 --> Added special characters'''
-import sys
+202202091339 --> Added special characters
+202202101027 --> Removed redundant import (sys)'''
+
 import hashlib
 
 def hash_n_check(test_pass):
