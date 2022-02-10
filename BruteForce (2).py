@@ -1,10 +1,13 @@
 '''Program that asks to either break a hashed password or set a new hashed password, by iterating a list of strings
 202202091339 --> Added special characters
-202202101027 --> Removed redundant import (sys)'''
+202202101027 --> Removed redundant import
+202202101035 --> Removed "test_pass = ("".join(pass_try))" added it to the function
+202202101054 --> Removed unessasary return of test_pass'''
 
 import hashlib
 
-def hash_n_check(test_pass):
+def hash_n_check(pass_try):
+    test_pass = ("".join(pass_try))
     list_hash = hashlib.sha256(test_pass.encode("utf-8")).hexdigest()
     return list_hash
 #############################################################################################################################################
@@ -46,41 +49,39 @@ while True:
 
         
         for letter in letters:
-            pass_try[3] = letter
-            test_pass = ("".join(pass_try))
-            hashed_try = hash_n_check(test_pass)
+            pass_try[3] = letter  
+            hashed_try = hash_n_check(pass_try)
             if hashed_try == secret_hash:
-                print ("The password was ", test_pass);input('Press any key to exit')
+                print ("The password was ", ("".join(pass_try)));input('Press any key to exit')
                 raise SystemExit
             else:
                 for letter in letters:
                     pass_try[2] = letter
-                    test_pass = ("".join(pass_try))
-                    hashed_try = hash_n_check(test_pass)
+                    hashed_try = hash_n_check(pass_try)
                     if hashed_try == secret_hash:
-                        print ("The password was ", test_pass);input('Press any key to exit')
+                        print ("The password was ", ("".join(pass_try)));input('Press any key to exit')
                         raise SystemExit
                     else:
                         
                         for letter in letters:
                             pass_try[1] = letter
-                            test_pass = ("".join(pass_try))
-                            hashed_try = hash_n_check(test_pass)
+                            hashed_try = hash_n_check(pass_try)
                             if hashed_try == secret_hash:
-                                print ("The password was ", test_pass);input('Press any key to exit')
+                                print ("The password was ", ("".join(pass_try)));input('Press any key to exit')
                                 raise SystemExit
                             
                             else:
                                 
                                 for letter in letters:
                                     pass_try[0] = letter
-                                    test_pass = ("".join(pass_try))
-                                    hashed_try = hash_n_check(test_pass)
+                                    hashed_try = hash_n_check(pass_try)
                                     if hashed_try == secret_hash:
-                                        print ("The password was ", test_pass);input('Press any key to exit')
+                                        print ("The password was ", ("".join(pass_try)));input('Press any key to exit')
                                         raise SystemExit
                                     else:
                                         continue
 
         else:
             break
+
+    
